@@ -97,7 +97,13 @@
 			}
 		}
 	}
-	
+	if($tsponsor['tspon']<4.5){
+		$SponsorBonus=0;
+	}elseif($tsponsor['tspon']==4.5){
+		$SponsorBonus=((($require_amn*$PackAInfo['direct_com'])/100)*3)-$tsponsor['tspon'];
+	}elseif($tsponsor['tspon']>4.5){
+		$SponsorBonus=(($require_amn*$PackAInfo['direct_com'])/100);
+	}
 	function daily_in($userlist,$amount,$date){
 		global $mysqli;
 		$iiiin=implode("' OR DATE(`count_date`)='".$date."' AND `user`='", $userlist);
